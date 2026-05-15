@@ -3,6 +3,7 @@ require("./models");
 
 async function sync() {
   try {
+    await sequelize.query("PRAGMA foreign_keys = ON;");
     await sequelize.sync({ force: true });
     console.log("All tables synced successfully.");
     process.exit(0);

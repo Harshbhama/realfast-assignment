@@ -5,6 +5,9 @@ const sequelize = new Sequelize({
   dialect: "sqlite",
   storage: path.join(__dirname, "..", "database.sqlite"),
   logging: false,
+  dialectOptions: {
+    foreignKeys: true,
+  },
 });
 
 module.exports = sequelize;

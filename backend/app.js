@@ -9,7 +9,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use("/api", routes);
 
-sequelize.sync()
+sequelize.query("PRAGMA foreign_keys = ON;")
+.then(() => sequelize.sync())
 .then(() => {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

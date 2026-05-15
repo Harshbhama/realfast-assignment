@@ -4,7 +4,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "sync": "node sync.js"
+    "sync": "node sync.js",
+    "seed": "node seed.js"
   },
   "keywords": [],
   "author": "",
