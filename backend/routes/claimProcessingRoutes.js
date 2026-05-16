@@ -7,8 +7,10 @@ const { createMemberSchema, createClaimSchema, createDisputeSchema, resolveDispu
 router.get("/policies", claimProcessingController.getAllPolicies);
 router.get("/policies/:id", claimProcessingController.getPolicyById);
 router.get("/services", claimProcessingController.getAllServices);
+router.get("/members", claimProcessingController.getAllMembers);
 router.post("/members", validate(createMemberSchema), claimProcessingController.createMember);
 router.get("/claims", claimProcessingController.getAllClaims);
+router.get("/claims/:id", claimProcessingController.getClaimById);
 router.post("/claims", validate(createClaimSchema), claimProcessingController.createClaim);
 router.post("/claims/:id/adjudicate", claimProcessingController.adjudicateClaim);
 router.get("/claims/:id/disputes", claimProcessingController.getDisputesByClaimId);

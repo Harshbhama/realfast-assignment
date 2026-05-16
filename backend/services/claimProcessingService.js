@@ -10,6 +10,10 @@ exports.getPolicyById = (id) => {
   return Policy.findByPk(id, { include: [{ model: Coverage, include: [Service] }] });
 };
 
+exports.getAllMembers = () => {
+  return Member.findAll({ include: [Policy] });
+};
+
 exports.createMember = (data) => {
   return Member.create(data);
 };
@@ -20,6 +24,10 @@ exports.getAllServices = () => {
 
 exports.getAllClaims = () => {
   return Claim.findAll({ include: [LineItem, Member, Policy] });
+};
+
+exports.getClaimById = (id) => {
+  return Claim.findByPk(id, { include: [LineItem, Member, Policy] });
 };
 
 exports.createClaim = async (data) => {

@@ -19,6 +19,15 @@ exports.getPolicyById = async (req, res) => {
   }
 };
 
+exports.getAllMembers = async (req, res) => {
+  try {
+    const members = await claimProcessingService.getAllMembers();
+    res.json(members);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 exports.createMember = async (req, res) => {
   try {
     const member = await claimProcessingService.createMember(req.body);
@@ -41,6 +50,16 @@ exports.getAllClaims = async (req, res) => {
   try {
     const claims = await claimProcessingService.getAllClaims();
     res.json(claims);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.getClaimById = async (req, res) => {
+  try {
+    const claim = await claimProcessingService.getClaimById(req.params.id);
+    if (!claim) return res.status(404).json({ error: "Claim not found" });
+    res.json(claim);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
