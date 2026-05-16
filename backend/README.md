@@ -121,6 +121,24 @@ PATCH /api/disputes/1
 POST /api/claims/1/adjudicate
 ```
 
+## Running Tests
+
+```bash
+# Run full test suite
+npm test
+```
+
+Tests use an isolated in-memory SQLite database (force-synced per suite), so they won't touch your development data.
+
+**Test files:**
+
+| File | Coverage |
+|------|----------|
+| `tests/adjudication.test.js` | Deductible calculations, coverage percentages, annual limits, denial reasons, cross-claim tracking |
+| `tests/dispute.test.js` | Dispute creation, UPHELD/OVERTURNED resolution, re-adjudication flow |
+| `tests/claims.test.js` | Claim submission, validation, GET endpoints |
+| `tests/members.test.js` | Member creation, policies, services endpoints |
+
 ## Project Structure
 
 ```
@@ -151,6 +169,12 @@ backend/
 │   └── claimProcessingValidator.js # Joi schemas
 ├── middleware/
 │   └── validate.js                 # Validation middleware
+├── tests/
+│   ├── setup.js                    # Shared test helpers (app, DB setup, seed)
+│   ├── adjudication.test.js        # Adjudication engine tests
+│   ├── dispute.test.js             # Dispute lifecycle tests
+│   ├── claims.test.js              # Claim CRUD tests
+│   └── members.test.js             # Members, policies, services tests
 └── docs/
     ├── domain-model.md
     ├── decisions.md

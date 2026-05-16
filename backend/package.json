@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node app.js",
     "sync": "node sync.js",
-    "seed": "node seed.js"
+    "seed": "node seed.js",
+    "test": "jest --verbose --forceExit --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,9 @@
     "joi": "^18.2.1",
     "sequelize": "^6.37.8",
     "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "supertest": "^7.2.2"
   }
 }
