@@ -32,7 +32,7 @@ const Claim = sequelize.define("Claim", {
     allowNull: false,
     defaultValue: "SUBMITTED",
     validate: {
-      isIn: [["SUBMITTED", "UNDER_REVIEW", "APPROVED", "PARTIALLY_APPROVED", "DENIED", "PAID"]],
+      isIn: [["SUBMITTED", "UNDER_REVIEW", "APPROVED", "PARTIALLY_APPROVED", "DENIED", "PAID", "DISPUTED"]],
     },
   },
   submitted_at: {
